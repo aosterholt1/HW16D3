@@ -20,7 +20,8 @@ var svg = d3.select("#scatter")
 var chartGroup = svg.append("g")
     .attr("transform",`translate(${margin.left},${margin.top})`);
 
-d3.csv("../data/data.csv", function(popstats){
+d3.csv("data.csv", function(err, popstats){
+    if(err) throw err;
         popstats.forEach(function(record){
         record.smokes = +record.smokes;
         record.age = +record.age;
@@ -28,7 +29,7 @@ d3.csv("../data/data.csv", function(popstats){
         record.healthcare = +record.healthcare;
         record.obesity = +record.obesity;
     });
-    
+ 
     console.log(popstats)
     
     var xLinearScale = d3.scaleLinear()
