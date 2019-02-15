@@ -22,8 +22,7 @@ var chartGroup = svg.append("g")
 
 d3.csv("assets/data/data.csv")
 .then(function(popstats){
-    // if(error) throw error;
-    popstats.forEach(function(record){
+        popstats.forEach(function(record){
         record.smokes = +record.smokes;
         record.age = +record.age;
         record.poverty = +record.poverty;
@@ -81,25 +80,6 @@ d3.csv("assets/data/data.csv")
         .attr("y", d => yLinearScale(d.healthcare)+2)
         .style("font-size",".6em")
         .classed("fill-text", true);
-
-//    var toolTip = d3.tip()
-//       .attr("class", "tooltip")
-//       .offset([80, -60])
-//       .html(function(d) {
-//         return (`${d.rockband}<br>Hair length: ${d.hair_length}<br>Hits: ${d.num_hits}`);
-//       });
-
-   
-//     chartGroup.call(toolTip);
-
-   
-//     gdots.on("click", function(data) {
-//       toolTip.show(data, this);
-//     })
-    
-//       .on("mouseout", function(data, index) {
-//         toolTip.hide(data);
-//       });
 
     console.log(d => xLinearScale(d.poverty));
     console.log(d => yLinearScale(d.healthcare));
