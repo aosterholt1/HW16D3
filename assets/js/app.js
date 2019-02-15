@@ -20,7 +20,7 @@ var svg = d3.select("#scatter")
 var chartGroup = svg.append("g")
     .attr("transform",`translate(${margin.left},${margin.top})`);
 
-d3.csv("../assets/data/data.csv", function(error, popstats){
+d3.csv("assets/data/data.csv", function(error, popstats){
     if(error) throw error;
     popstats.forEach(function(record){
         record.smokes = +record.smokes;
@@ -60,7 +60,7 @@ d3.csv("../assets/data/data.csv", function(error, popstats){
     .attr("transform", `translate(0, ${chartHeight})`)
     .call(bottomAxis);
 
-    // append y axis
+ 
     chartGroup.append("g")
     .call(leftAxis);
 
@@ -88,32 +88,26 @@ d3.csv("../assets/data/data.csv", function(error, popstats){
         return (`${d.rockband}<br>Hair length: ${d.hair_length}<br>Hits: ${d.num_hits}`);
       });
 
-    // Step 7: Create tooltip in the chart
-    // ==============================
+   
     chartGroup.call(toolTip);
 
-    // Step 8: Create event listeners to display and hide the tooltip
-    // ==============================
+   
     gdots.on("click", function(data) {
       toolTip.show(data, this);
     })
-      // onmouseout event
+    
       .on("mouseout", function(data, index) {
         toolTip.hide(data);
       });
 
     console.log(d => xLinearScale(d.poverty));
     console.log(d => yLinearScale(d.healthcare));
-    // Create group for  2 x- axis labels
-//   var labelsGroup = chartGroup.append("g")
-//     .attr("transform", `translate(${chartWidth / 2}, ${chartHeight + 20})`);
-
-//   var popstatsLabel = labelsGroup
+  
   
   chartGroup.append("text")
     .attr("x", 0)
     .attr("y", 20)
-    .attr("value", "poverty") // value to grab for event listener
+    .attr("value", "poverty") 
     .attr("active", true)
     .text("Poverty Vs. Healthcare");
 
