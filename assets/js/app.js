@@ -81,24 +81,24 @@ d3.csv("assets/data/data.csv", function(error, popstats){
         .style("font-size",".6em")
         .classed("fill-text", true);
 
-   var toolTip = d3.tip()
-      .attr("class", "tooltip")
-      .offset([80, -60])
-      .html(function(d) {
-        return (`${d.rockband}<br>Hair length: ${d.hair_length}<br>Hits: ${d.num_hits}`);
-      });
+//    var toolTip = d3.tip()
+//       .attr("class", "tooltip")
+//       .offset([80, -60])
+//       .html(function(d) {
+//         return (`${d.rockband}<br>Hair length: ${d.hair_length}<br>Hits: ${d.num_hits}`);
+//       });
 
    
-    chartGroup.call(toolTip);
+//     chartGroup.call(toolTip);
 
    
-    gdots.on("click", function(data) {
-      toolTip.show(data, this);
-    })
+//     gdots.on("click", function(data) {
+//       toolTip.show(data, this);
+//     })
     
-      .on("mouseout", function(data, index) {
-        toolTip.hide(data);
-      });
+//       .on("mouseout", function(data, index) {
+//         toolTip.hide(data);
+//       });
 
     console.log(d => xLinearScale(d.poverty));
     console.log(d => yLinearScale(d.healthcare));
