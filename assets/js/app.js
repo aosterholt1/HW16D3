@@ -20,8 +20,8 @@ var svg = d3.select("#scatter")
 var chartGroup = svg.append("g")
     .attr("transform",`translate(${margin.left},${margin.top})`);
 
-d3.csv("assets/data/data.csv", function(error, popstats){
-    if(error) throw error;
+d3.csv("assets/data/data.csv") .then( function( popstats){
+    // if(error) throw error;
     popstats.forEach(function(record){
         record.smokes = +record.smokes;
         record.age = +record.age;
